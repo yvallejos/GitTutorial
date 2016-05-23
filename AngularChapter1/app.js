@@ -26,7 +26,19 @@
 				{
 					full: '1.jpg_256',
 				}
-			]
+			],
+      reviews: [ 
+        {
+          stars: 5,
+          body: "I love this product",
+          author: "joe@thomas.com"
+        },
+        {
+          stars: 1,
+          body: "this product is ugly",
+          author: "joe@hater.com"
+        }
+      ]
 		},
 		{
 			name: 'Pentagonal Gem',
@@ -37,7 +49,19 @@
 				{
 					full: '2.jpg_256',
 				}
-			]
+			],
+      reviews: [ 
+        {
+          stars: 4,
+          body: "Is beautiful",
+          author: "teo@thomas.com"
+        },
+        {
+          stars: 1,
+          body: "this product is too expensive",
+          author: "teo@hater.com"
+        }
+      ]
 		}
 	];
 })();

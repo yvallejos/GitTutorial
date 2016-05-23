@@ -33,7 +33,24 @@
         </div>
         <div class="panel" ng-show="panel.isSelected(3)">
           <h4>Reviews</h4>
-          <p>None yet</p>
+          <blockquote ng-repeat="review in product.reviews">
+            <b>Starts: {{review.stars}}</b>
+            {{review.body}}
+            <cite>by: {{review.author}}</cite>
+          </blockquote>
+          <form name="reviewForm">
+            <select>
+              <option value="1">1 Star</option>
+              <option value="2">2 Star</option>
+              <option value="3">3 Star</option>
+              <option value="4">4 Star</option>
+              <option value="5">5 Star</option>
+            </select>
+            <textarea></textarea>
+            <label>by:</label>
+            <input type="email" name="">
+            <input type="submit" value="Submit">
+          </form>
         </div>
 				</section>
 			</li>
