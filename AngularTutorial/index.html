@@ -6,11 +6,9 @@
 	<body ng-controller="StoreController as store">
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="product in store.products">
-				<h3>
-					{{product.name}} 
-					<em class="pull-right"> {{product.price | currency}} </em>
-					<img ng-src="{{product.images[0].full}}">
-				</h3>
+				
+					<product-title></product-title>
+				
 				<section ng-controller="PanelController as panel">
 					<ul class="nav nav-pills">
 						<li ng-class="{ active: panel.isSelected(1)}">
@@ -38,23 +36,31 @@
             {{review.body}}
             <cite>by: {{review.author}}</cite>
           </blockquote>
-          <form name="reviewForm">
+          <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate="">
             <blockquote>
-              <b>Starts: {{review.stars}}</b>
-              {{review.body}}
-              <cite>by: {{review.author}}</cite>
+              <b>{{reviewCtrl.review.stars}} Starts </b>
+              {{reviewCtrl.review.body}}
+              <cite>by: {{reviewCtrl.review.author}}</cite>
             </blockquote>
-            <select class="form-control" ng-model="review.stars">
-              <option value="1">1 Star</option>
-              <option value="2">2 Star</option>
-              <option value="3">3 Star</option>
-              <option value="4">4 Star</option>
-              <option value="5">5 Star</option>
-            </select>
-            <textarea class="form-control" ng-model="review.body"></textarea>
-            <label>by:</label>
-            <input type="email" ng-model="review.author">
-            <input type="submit" value="Submit">
+            <fieldset class="form-group">
+              <select class="form-control" ng-model="reviewCtrl.review.stars" required=""> 
+                <option value="">Rate the Product</option>
+                <option value="1">1 Star</option>
+                <option value="2">2 Star</option>
+                <option value="3">3 Star</option>
+                <option value="4">4 Star</option>
+                <option value="5">5 Star</option>
+              </select>
+            </fieldset>
+            <fieldset class="form-group">
+              <textarea class="form-control" ng-model="reviewCtrl.review.body" required=""></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+              <label>by:</label>
+              <input class="form-control" type="email" ng-model="reviewCtrl.review.author" placeholder="jimmyDean@example.org" title="Email" required="">
+            </fieldset>
+            <div>reviewForm is {{reviewForm.$valid}}</div>
+            <input type="submit" value="Submit" class="btn btn-primary pull-right">
           </form>
         </div>
 				</section>
@@ -63,5 +69,6 @@
 
 		<script type="text/javascript" src="angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="products.js"></script>
 	</body>
 </html>
